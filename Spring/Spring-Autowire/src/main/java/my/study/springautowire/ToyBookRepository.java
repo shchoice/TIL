@@ -2,6 +2,7 @@ package my.study.springautowire;
 
 import org.springframework.stereotype.Repository;
 
-public interface BookRepository {
+@Repository
+public class ToyBookRepository implements BookRepository{
 
 }
