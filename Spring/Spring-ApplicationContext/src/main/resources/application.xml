@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!-- 아주아주 고전적인 bean 설정 방식 -->
+  <bean id="bookService"
+    class="my.study.springapplicationcontext.BookService"
+    scope="singleton"
+    autowire="default">
+    <property name="bookRepository" ref="bookRepository"/>
+<!--    bookrepository는 setter로 부터 가져온 것임, ref로 설정하면 해당하는 id도 반드시 생성해야 함-->
+  </bean>
+
+  <bean id="bookRepository"
+    class="my.study.springapplicationcontext.BookRepository"/>
+</beans>
