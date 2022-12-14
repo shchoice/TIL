@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Scope("test")
+@Scope("!prod & test")
 public class TestBookRepository implements BookRepository {
 
 }
