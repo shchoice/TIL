@@ -2,6 +2,7 @@ package my.study.bean.scope;
 
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
@@ -14,10 +15,12 @@ public class AppRunner implements ApplicationRunner {
   @Autowired
   ApplicationContext applicationContext;
 
+  @Value("${app.name}")
+  String appName;
+
   @Override
   public void run(ApplicationArguments args) throws Exception {
     Environment environment = applicationContext.getEnvironment();
-    // 다만 vm option 이 app.properties 보다 우선순위가 높음
-    System.out.println(environment.getProperty("app.name")); // Spring
+    System.out.println(appName); // Spring
   }
 }
