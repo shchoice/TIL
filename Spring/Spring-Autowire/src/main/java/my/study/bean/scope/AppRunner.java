@@ -17,8 +17,8 @@ public class AppRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     Environment environment = applicationContext.getEnvironment();
-    System.out.println(Arrays.toString(environment.getActiveProfiles())); // [test]
-    System.out.println(Arrays.toString(environment.getDefaultProfiles())); // [default]
+    // VM options에 -Dapp.name="Spring5" 적음
+    System.out.println(environment.getProperty("app.name")); // Spring5
 
   }
 }
