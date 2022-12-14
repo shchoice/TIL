@@ -17,8 +17,7 @@ public class AppRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     Environment environment = applicationContext.getEnvironment();
-    // VM options에 -Dapp.name="Spring5" 적음
-    System.out.println(environment.getProperty("app.name")); // Spring5
-
+    // 다만 vm option 이 app.properties 보다 우선순위가 높음
+    System.out.println(environment.getProperty("app.name")); // Spring
   }
 }
