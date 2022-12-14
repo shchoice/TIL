@@ -17,7 +17,7 @@ public class AppRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     Environment environment = applicationContext.getEnvironment();
-    System.out.println(Arrays.toString(environment.getActiveProfiles())); // []
+    System.out.println(Arrays.toString(environment.getActiveProfiles())); // [test]
     System.out.println(Arrays.toString(environment.getDefaultProfiles())); // [default]
 
   }
