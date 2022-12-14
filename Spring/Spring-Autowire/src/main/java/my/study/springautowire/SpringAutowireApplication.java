@@ -12,12 +12,8 @@ public class SpringAutowireApplication {
   @Autowired
   BookService bookService;
   public static void main(String[] args) {
-//    SpringApplication.run(SpringAutowireApplication.class, args);
-    var app = new SpringApplication(SpringAutowireApplication.class);
-    app.addInitializers((ApplicationContextInitializer<GenericApplicationContext>) applicationContext -> {
-      applicationContext.registerBean(BookService.class);
-    } );
-    app.run(args);
+    SpringApplication.run(SpringAutowireApplication.class, args);
+
   }
 
 
