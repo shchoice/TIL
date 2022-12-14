@@ -28,5 +28,19 @@ public class AppRunner implements ApplicationRunner {
     System.out.println(applicationContext.getBean(Single.class).getProto());
     System.out.println(applicationContext.getBean(Single.class).getProto());
     System.out.println(applicationContext.getBean(Single.class).getProto());
+    /*
+    Proto
+    my.study.bean.scope.Proto@7102ac3e
+    my.study.bean.scope.Proto@3f598450
+    my.study.bean.scope.Proto@2db2a05f
+    Singleton
+    my.study.bean.scope.Single@695c938d
+    my.study.bean.scope.Single@695c938d
+    my.study.bean.scope.Single@695c938d
+    Proto by Single
+    my.study.bean.scope.Proto@d5bb1c4
+    my.study.bean.scope.Proto@7ed3df3b
+    my.study.bean.scope.Proto@465b38e6
+     */
   }
 }
