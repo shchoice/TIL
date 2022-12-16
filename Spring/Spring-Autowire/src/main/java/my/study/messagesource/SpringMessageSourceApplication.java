@@ -18,6 +18,7 @@ public class SpringMessageSourceApplication {
     var messageSource = new ReloadableResourceBundleMessageSource();
     messageSource.setBasename("classpath:/messages");
     messageSource.setDefaultEncoding("UTF-8");
+    messageSource.setCacheSeconds(3);
     return messageSource;
   }
 }
