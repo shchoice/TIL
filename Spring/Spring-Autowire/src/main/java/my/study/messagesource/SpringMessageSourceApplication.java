@@ -12,4 +12,12 @@ public class SpringMessageSourceApplication {
   public static void main(String[] args) {
     SpringApplication.run(SpringMessageSourceApplication.class, args);
   }
+
+  @Bean
+  public MessageSource messageSource() {
+    var messageSource = new ReloadableResourceBundleMessageSource();
+    messageSource.setBasename("classpath:/messages");
+    messageSource.setDefaultEncoding("UTF-8");
+    return messageSource;
+  }
 }
