@@ -1,20 +1,17 @@
 package my.study.event;
 
 import org.springframework.context.ApplicationEvent;
-
-public class MyEvent extends ApplicationEvent {
+public class MyEvent {
 
   private int data;
+  private Object source;
 
   public int getData() {
     return data;
   }
 
-  public MyEvent(Object source) {
-    super(source);
-  }
-
   public MyEvent(Object source, int data) {
-    super(source);
+    this.source = source;
+    this.data = data;
   }
 }
