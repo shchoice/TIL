@@ -10,6 +10,7 @@ public class MyEventHandler {
 
   @EventListener
   public void handle(MyEvent event) {
+    System.out.println(Thread.currentThread().toString());
     System.out.println("Event Received, Data : " + event.getData());
   }
 }
