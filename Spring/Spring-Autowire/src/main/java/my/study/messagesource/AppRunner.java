@@ -20,6 +20,7 @@ public class AppRunner implements ApplicationRunner {
     System.out.println(messageSource.getMessage("greeting", new String[]{"스프링"}, Locale.getDefault()));
     System.out.println(messageSource.getMessage("greeting", new String[]{"스프링"}, Locale.KOREA));
     System.out.println(messageSource.getMessage("greeting", new String[]{"Spring"}, Locale.US));
+    // class org.springframework.context.support.ResourceBundleMessageSource
     // 안녕하세요, 스프링
     // 안녕하세요, 스프링
     // Hello!, Spring
