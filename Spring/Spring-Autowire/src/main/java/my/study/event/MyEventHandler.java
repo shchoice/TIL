@@ -1,5 +1,6 @@
 package my.study.event;
 
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -13,5 +14,13 @@ public class MyEventHandler {
   public void handle(MyEvent event) {
     System.out.println(Thread.currentThread().toString());
     System.out.println("Event Received, Data : " + event.getData());
+  }
+
+  @EventListener
+  @Async
+  public void handle(ContextRefreshedEvent event) {
+    System.out.println(Thread.currentThread().toString());
+    System.out.println("ContextRefreshedEvent");
+    var applicationContext = event.getApplicationContext();
   }
 }
