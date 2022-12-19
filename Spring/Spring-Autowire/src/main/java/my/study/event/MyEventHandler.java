@@ -2,6 +2,8 @@ package my.study.event;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class MyEventHandler {
 
   @EventListener
+  @Order(Ordered.HIGHEST_PRECEDENCE + 2)
   public void handle(MyEvent event) {
     System.out.println(Thread.currentThread().toString());
     System.out.println("Event Received, Data : " + event.getData());
