@@ -18,7 +18,9 @@ public class AppRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    System.out.println(resourceLoader.getClass()); // class org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext
     Resource resource = resourceLoader.getResource("classpath:test.txt");
+    System.out.println(resource.getClass()); // class org.springframework.core.io.ClassPathResourc
     System.out.println(resource.exists()); // true
     System.out.println(resource.getDescription()); // class path resource [test.txt]
     System.out.println(Files.readString(Path.of(resource.getURI()))); // Hello Spring!
