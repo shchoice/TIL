@@ -23,12 +23,18 @@ public class AppRunner implements ApplicationRunner {
 
     eventValidator.validate(event, errors);
 
-    System.out.println(errors.hasErrors());
+    System.out.println(errors.hasErrors()); // true
 
     errors.getAllErrors().forEach(e -> {
       System.out.println("===== Error Code ====");
       Arrays.stream(e.getCodes()).forEach(System.out::println);
       System.out.println(e.getDefaultMessage());
     });
+    // ===== Error Code ====
+    // notempty.event.title
+    // notempty.title
+    // notempty.java.lang.String
+    // notempty
+    // Empty title is not allowed
   }
 }
