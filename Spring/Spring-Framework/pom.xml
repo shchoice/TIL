@@ -10,10 +10,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>my.study</groupId>
-  <artifactId>Spring-Autowire</artifactId>
+  <artifactId>Spring-Framework</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Spring-Autowire</name>
-  <description>Spring-Autowire</description>
+  <name>Spring-Framework</name>
+  <description>Spring-Framework</description>
   <properties>
     <java.version>11</java.version>
   </properties>

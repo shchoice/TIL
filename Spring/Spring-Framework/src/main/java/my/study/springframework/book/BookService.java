@@ -1,4 +1,4 @@
-package springframework.book;
+package my.study.springframework.book;
 
 import java.util.Date;
 import javax.annotation.PostConstruct;

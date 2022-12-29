@@ -1,4 +1,4 @@
-package springapplicationcontext;
+package my.study.springapplicationcontext;
 
 import java.util.Arrays;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
