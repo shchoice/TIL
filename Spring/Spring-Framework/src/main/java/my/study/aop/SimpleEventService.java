@@ -29,11 +29,6 @@ public class SimpleEventService implements EventService {
 
   @Override
   public void deleteEvent() {
-    try {
-      Thread.sleep(2000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     System.out.println("Delete an Event");
   }
 }
