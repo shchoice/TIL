@@ -3,9 +3,6 @@
   "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <listener>
-    <listener-class>me.study.springmvc.servlet.MyListener</listener-class>
-  </listener>
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>me.study.springmvc.servlet.HelloServlet</servlet-class>
