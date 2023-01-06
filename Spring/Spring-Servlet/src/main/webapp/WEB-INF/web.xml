@@ -3,6 +3,7 @@
   "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
   <filter>
     <filter-name>myFilter</filter-name>
     <filter-class>me.study.springmvc.servlet.MyFilter</filter-class>
@@ -11,9 +12,20 @@
     <filter-name>myFilter</filter-name>
     <servlet-name>hello</servlet-name>
   </filter-mapping>
+
   <listener>
-    <listener-class>me.study.springmvc.servlet.MyListener</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+  <context-param>
+    <param-name>contextClass</param-name>
+    <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+  </context-param>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>me.study.springmvc.servlet.AppConfig</param-value>
+  </context-param>
+
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>me.study.springmvc.servlet.HelloServlet</servlet-class>
