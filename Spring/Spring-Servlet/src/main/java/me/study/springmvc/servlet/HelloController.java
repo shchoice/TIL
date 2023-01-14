@@ -21,7 +21,7 @@ public class HelloController {
   @GetMapping("/hello")
   @ResponseBody
   public String hello() {
-    return "Hello, " + helloService.getName();
+     return "Hello, " + helloService.getName();
   }
 
   @GetMapping("/sample")
