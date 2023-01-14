@@ -10,7 +10,7 @@ public class SimpleController implements Controller {
 
   @Override
   public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-    return new ModelAndView("/WEB-INF/simple.jsp");
+    return new ModelAndView("simple");
 
   }
 }
