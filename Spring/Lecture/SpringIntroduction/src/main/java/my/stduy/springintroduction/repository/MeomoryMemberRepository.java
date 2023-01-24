@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import my.stduy.springintroduction.domain.Member;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MeomoryMemberRepository implements MemberRepository {
 
   private static Map<Long, Member> store = new ConcurrentHashMap<>();
