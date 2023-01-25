@@ -2,6 +2,7 @@ package my.stduy.springintroduction;
 
 import javax.sql.DataSource;
 import my.stduy.springintroduction.repository.JdbcMemberRepository;
+import my.stduy.springintroduction.repository.JdbcTemplateMemberRepository;
 import my.stduy.springintroduction.repository.MemberRepository;
 import my.stduy.springintroduction.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,6 @@ public class SpringConfig {
 
   @Bean
   public MemberRepository memberRepository() {
-    return new JdbcMemberRepository(dataSource);
+    return new JdbcTemplateMemberRepository(dataSource);
   }
 }
