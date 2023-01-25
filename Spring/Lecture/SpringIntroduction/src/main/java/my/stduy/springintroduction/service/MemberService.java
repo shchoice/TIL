@@ -6,8 +6,10 @@ import my.stduy.springintroduction.domain.Member;
 import my.stduy.springintroduction.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
+@Transactional
 public class MemberService {
 
   private final MemberRepository memberRepository;
