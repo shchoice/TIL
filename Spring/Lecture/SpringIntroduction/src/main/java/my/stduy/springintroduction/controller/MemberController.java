@@ -17,6 +17,8 @@ public class MemberController {
   @Autowired
   public MemberController(MemberService memberService) {
     this.memberService = memberService;
+    System.out.println("memberService = " + memberService.getClass());
+    // memberService = class my.stduy.springintroduction.service.MemberService$$EnhancerBySpringCGLIB$$41975c14
   }
 
   @GetMapping(value = "/members/new")
