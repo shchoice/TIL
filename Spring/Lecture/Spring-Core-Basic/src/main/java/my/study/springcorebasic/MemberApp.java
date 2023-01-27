@@ -1,9 +1,15 @@
-package my.study.springcorebasic.member;
+package my.study.springcorebasic;
+
+import my.study.springcorebasic.AppConfig;
+import my.study.springcorebasic.member.Grade;
+import my.study.springcorebasic.member.Member;
+import my.study.springcorebasic.member.MemberService;
 
 public class MemberApp {
 
   public static void main(String[] args) {
-    MemberService memberService = new MemberServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
     Member member = new Member(1L, "memberA", Grade.VIP);
     memberService.join(member);
 
