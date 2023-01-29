@@ -1,5 +1,7 @@
 package my.study.springcorebasic.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
@@ -30,25 +32,15 @@ public class NetworkClient {
     System.out.println("close: " + url);
   }
 
+  @PostConstruct
   public void init() {
     System.out.println("NetworkClient.init");
     connect();
     call("초기화 연결 메시지");
   }
-
+  @PreDestroy
   public void close() {
     System.out.println("NetworkClient.close");
     disConnect();
-  }
-
-  @Configuration
-  static class LifeCycleConfig {
-    @Bean(initMethod = "init", destroyMethod = "close")
-    public NetworkClient networkClient() {
-      NetworkClient networkClient = new NetworkClient();
-      networkClient.setUrl("http://hello-spring.dev");
-
-      return networkClient;
-    }
   }
 }
