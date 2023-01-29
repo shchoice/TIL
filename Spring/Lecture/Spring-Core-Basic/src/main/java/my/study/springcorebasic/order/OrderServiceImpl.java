@@ -1,18 +1,20 @@
 package my.study.springcorebasic.order;
 
-import lombok.RequiredArgsConstructor;
 import my.study.springcorebasic.discount.DiscountPolicy;
 import my.study.springcorebasic.member.Member;
 import my.study.springcorebasic.member.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements  OrderService {
 
   private final MemberRepository memberRepository;
   private final DiscountPolicy discountPolicy;
+
+  public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = rateDiscountPolicy;
+  }
 
   @Override
   public Order createOrder(Long memberId, String itemName, int itemPrice) {
