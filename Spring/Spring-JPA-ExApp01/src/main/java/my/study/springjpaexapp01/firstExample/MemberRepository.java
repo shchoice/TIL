@@ -1,4 +1,4 @@
-package my.study.springjpaexapp01;
+package my.study.springjpaexapp01.firstExample;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

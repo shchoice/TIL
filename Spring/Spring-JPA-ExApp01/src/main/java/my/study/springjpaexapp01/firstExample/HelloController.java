@@ -1,4 +1,4 @@
-package my.study.springjpaexapp01;
+package my.study.springjpaexapp01.firstExample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
