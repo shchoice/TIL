@@ -14,15 +14,22 @@ public class JpaMain {
 
     tx.begin();
 
-    Member member = new Member();
+    try {
+      Member member = new Member();
+      member.setId(1L);
+      member.setName("Hello First");
 
-    member.setId(1L);
-    member.setName("Hello First");
+      em.persist(member);
 
-    em.persist(member);
-
-    tx.commit();
+      tx.commit();
+    } catch (Exception e) {
+      tx.rollback();
+    } finally {
+      em.close();
+    }
     entityManagerFactory.close();
-    em.close();
+  }
+  public void enroll() {
+
   }
 }
