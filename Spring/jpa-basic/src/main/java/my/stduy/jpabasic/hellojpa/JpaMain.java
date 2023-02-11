@@ -15,13 +15,16 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member findMember01 = em.find(Member.class, 10L);
-      Member findMember02 = em.find(Member.class, 10L);
+      Member member01 = new Member(20L, "shchoi");
+      Member member02 = new Member(21L, "shchoi");
 
-      System.out.println("result = " + (findMember01 == findMember02)); // true
+      em.persist(member01);
+      em.persist(member02);
 
+      System.out.println("================");
       // DB에 쿼리가 날아가 저장되는 시점
       tx.commit();
+      // insert 가 이 시점에 이루어지게 됨
     } catch (Exception e) {
       tx.rollback();
     } finally {
