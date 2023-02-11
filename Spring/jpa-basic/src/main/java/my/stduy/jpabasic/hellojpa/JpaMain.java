@@ -15,11 +15,11 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member member01 = new Member(20L, "shchoi");
-      Member member02 = new Member(21L, "shchoi");
+      Member member = em.find(Member.class, 20L);
+      member.setName("shchoiii");
 
-      em.persist(member01);
-      em.persist(member02);
+      // em.persist(member); JDBC와 같이 persist를 통해 update를 수행해야할 것 같지만 JPA는 아니다.
+      // 마치 Collection 객체의 arrayList에 담듯이 set만 해주면 된다.
 
       System.out.println("================");
       // DB에 쿼리가 날아가 저장되는 시점
