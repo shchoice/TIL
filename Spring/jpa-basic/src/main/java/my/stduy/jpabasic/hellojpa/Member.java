@@ -23,15 +23,22 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(
+@TableGenerator(
     name = "MEMBER_SEQ_GENERATOR",
-    sequenceName = "MEMBER_SEQ",
-    initialValue = 1, allocationSize = 1)
-// Hibernate: create sequence MEMBER_SEQ start with 1 increment by 1
+    table = "MY_SEQUENCES",
+    pkColumnValue = "MEMBER_SEQ", allocationSize = 1)
+/*
+    create table MY_SEQUENCES (
+       sequence_name varchar(255) not null,
+        next_val bigint,
+        primary key (sequence_name)
+    )
+ */
 public class Member {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
+  @GeneratedValue(strategy = GenerationType.TABLE,
+      generator = "MEMBER_SEQ_GENERATOR")
   private Long id; // id bigint not null
   @Column(name = "name")
   private String username;

@@ -17,20 +17,15 @@ public class JpaMain {
     try {
       Member member = new Member();
       member.setUsername("shchoice");
-
+      // insert into MY_SEQUENCES(sequence_name, next_val) values ('MEMBER_SEQ',0)
       System.out.println("==========");
       em.persist(member);
-      // DB에 가서 SEQUENCE 정보를 받아오고 tx.commit에서 insert, DB 2번 다녀올 필요가 있나
-      // -> 대안 allocationSize 을 크게 해서 DB와 통신을 줄임 (allocation = 50 하면, 50개를 미리 받고 다른 데에서는 51번부터 사용)
+      /*
+           select tbl.next_val from MY_SEQUENCES tbl where tbl.sequence_name=? for update
+           update MY_SEQUENCES set next_val=? where next_val=? and sequence_name=?
+       */
       System.out.println("member.id = " + member.getId());
       System.out.println("==========");
-      /*
-       ==========
-       Hibernate:
-          call next value for MEMBER_SEQ
-       member.id = 1
-       ==========
-       */
 
       tx.commit();
       /*
