@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
@@ -22,11 +23,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name = "", sequenceName = "MEMBER_SEQ", initialValue = 1, allocationSize = 1) // Hibernate: create sequence MEMBER_SEQ_GENERATOR start with 1 increment by 50
+@TableGenerator(name = "MEMBER_SEQ_GENERATOR", table ="MY_SEQUENCES", pkColumnValue = "MEMBER_SEQ", allocationSize = 1)
+/*
+    create table MY_SEQUENCES (
+       sequence_name varchar(255) not null,
+        next_val bigint,
+        primary key (sequence_name)
+    )
+ */
 public class Member {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR") // id bigint not null,
+  @GeneratedValue(strategy = GenerationType.TABLE, generator = "MEMBER_SEQ_GENERATOR") // id bigint not null,
   private Long id;
   @Column(name = "name")
   private String username;

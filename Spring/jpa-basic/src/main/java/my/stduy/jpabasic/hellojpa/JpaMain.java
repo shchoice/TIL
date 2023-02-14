@@ -16,6 +16,7 @@ public class JpaMain {
 
     try {
       Member member = new Member();
+      // insert into MY_SEQUENCES(sequence_name, next_val) values ('MEMBER_SEQ',0)
       member.setUsername("shchoice");
       tx.commit();
     } catch (Exception e) {
