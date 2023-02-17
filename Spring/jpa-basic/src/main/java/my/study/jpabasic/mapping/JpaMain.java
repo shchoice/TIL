@@ -24,9 +24,14 @@ public class JpaMain {
       // 회원 저장
       Member member = new Member();
       member.setName("shchoi");
-      member.setTeamId(team.getId());
+      member.setTeam(team);
       em.persist(member);
       // SELECT * FROM TEAM; 의 결과 (2, 1, "shchoi") <- (member_id, team_id, username)
+
+      Member findMember = em.find(Member.class, member.getId());
+      Team findTeam = findMember.getTeam();
+
+      System.out.println("findTeam = " + findTeam.getName());
 
       tx.commit();
     } catch (Exception e) {
