@@ -25,10 +25,12 @@ public class JpaMain {
       // 회원 저장
       Member member = new Member();
       member.setName("shchoi");
-      //연관관계 주인에 값을 입력하지 않음(양방향 매핑 시 가장 많이 하는 실수!)
 
       // 역방향(주인이 아닌 방향)만 연관관계 설정
       team.getMembers().add(member);
+      // 연관관계의 주인에 값 설정
+      member.setTeam(team);
+
       em.persist(member);
       // SELECT * FROM TEAM; 의 결과 (2, 1, "shchoi") <- (member_id, team_id, username)
 
