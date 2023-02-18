@@ -1,5 +1,6 @@
 package my.study.jpabasic.mapping;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -28,10 +29,15 @@ public class JpaMain {
       em.persist(member);
       // SELECT * FROM TEAM; 의 결과 (2, 1, "shchoi") <- (member_id, team_id, username)
 
-      Member findMember = em.find(Member.class, member.getId());
-      Team findTeam = findMember.getTeam();
+      em.flush();
+      em.clear();
 
-      System.out.println("findTeam = " + findTeam.getName());
+      Member findMember = em.find(Member.class, member.getId());
+      List<Member> members = findMember.getTeam().getMembers();
+
+      for (Member m : members) {
+        System.out.println("member = " + m.getName());
+      }
 
       tx.commit();
     } catch (Exception e) {
