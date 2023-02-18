@@ -16,33 +16,23 @@ public class JpaMain {
     tx.begin();
 
     try {
-      // 팀 저장
-      Team team = new Team();
-      team.setName("기반기술팀");
-      em.persist(team);
-      // SELECT * FROM MEMBER; 의 결과 (1, "기반기술팀")
-
-      // 회원 저장
       Member member = new Member();
       member.setName("shchoi");
-
-      // 역방향(주인이 아닌 방향)만 연관관계 설정
-      // team.getMembers().add(member);
-      // 연관관계의 주인에 값 설정
-      member.changeTeam(team);
-
       em.persist(member);
-      // SELECT * FROM TEAM; 의 결과 (2, 1, "shchoi") <- (member_id, team_id, username)
 
-      em.flush();
-      em.clear();
-
-      Member findMember = em.find(Member.class, member.getId());
-      List<Member> members = findMember.getTeam().getMembers();
-
-      for (Member m : members) {
-        System.out.println("member = " + m.getName());
-      }
+      Team team = new Team();
+      team.setName("teamA");
+      team.getMembers().add(member);
+      em.persist(team);
+      // OneToMany 의 문제점
+      // 1. team 을 수정했는데 member에 update Query가 나감
+      //    /* create one-to-many row my.study.jpabasic.mapping.Team.members */ update
+      //        member
+      //    set
+      //        team_id=?
+      //    where
+      //        id=?
+      // 2. OnetoMany를 잘 이해했다고 해도 실무에서 쿼리가 엄청 많아서 헷갈림..
 
       tx.commit();
     } catch (Exception e) {
