@@ -27,9 +27,9 @@ public class JpaMain {
       member.setName("shchoi");
 
       // 역방향(주인이 아닌 방향)만 연관관계 설정
-      team.getMembers().add(member);
+      // team.getMembers().add(member);
       // 연관관계의 주인에 값 설정
-      member.setTeam(team);
+      member.changeTeam(team);
 
       em.persist(member);
       // SELECT * FROM TEAM; 의 결과 (2, 1, "shchoi") <- (member_id, team_id, username)

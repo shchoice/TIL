@@ -22,5 +22,10 @@ public class Member {
   @ManyToOne
   @JoinColumn(name = "team_id")
   private Team team;
+
+  public void changeTeam(Team team) {
+    this.team = team;
+    team.getMembers().add(this);
+  }
 }
 
