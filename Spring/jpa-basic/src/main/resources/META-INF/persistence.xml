@@ -5,6 +5,7 @@
   <persistence-unit name="mapping">
     <class>my.study.jpabasic.mapping.Member</class>
     <class>my.study.jpabasic.mapping.Team</class>
+    <class>my.study.jpabasic.mapping.Locker</class>
 <!--    <class>my.study.jpabasic.jpashop.domain.Item</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Member</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Order</class>-->
