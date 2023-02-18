@@ -15,9 +15,12 @@ public class Member {
 
   @Id @GeneratedValue
   private Long id;
-
   @Column(name = "username")
   private String name;
+  @ManyToOne
+  @JoinColumn(name = "team_id", insertable = false, updatable = false)
+  private Team team;
+
 
 }
 
