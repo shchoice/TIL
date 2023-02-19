@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +30,7 @@ public class Member {
   @OneToOne
   @JoinColumn(name = "locker_id")
   private Locker locker;
-  @ManyToMany
-  @JoinTable(name = "member_product")
-  private List<Product> products = new ArrayList<>();
+  @OneToMany(mappedBy = "member")
+  private List<MemberProduct> memberProducts = new ArrayList<>();
 }
 
