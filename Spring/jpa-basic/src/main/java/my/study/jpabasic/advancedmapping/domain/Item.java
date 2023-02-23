@@ -1,5 +1,6 @@
 package my.study.jpabasic.advancedmapping.domain;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 public class Item {
 
   @Id @GeneratedValue
