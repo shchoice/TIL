@@ -1,5 +1,6 @@
 package my.study.jpabasic.mapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,6 +19,9 @@ public class JpaMain {
     try {
       Member member = new Member();
       member.setName("shchoi");
+      member.setCreatedBy("shchoi");
+      member.setCreatedDate(LocalDateTime.now());
+
       em.persist(member);
 
       Team team = new Team();

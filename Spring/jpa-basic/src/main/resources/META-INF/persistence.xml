@@ -2,22 +2,22 @@
 <persistence version="2.2"
   xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-  <persistence-unit name="advancedmapping">
-<!--    <class>my.study.jpabasic.mapping.Member</class>-->
-<!--    <class>my.study.jpabasic.mapping.Team</class>-->
-<!--    <class>my.study.jpabasic.mapping.Locker</class>-->
-<!--    <class>my.study.jpabasic.mapping.Product</class>-->
-<!--    <class>my.study.jpabasic.mapping.MemberProduct</class>-->
+  <persistence-unit name="mapping">
+    <class>my.study.jpabasic.mapping.Member</class>
+    <class>my.study.jpabasic.mapping.Team</class>
+    <class>my.study.jpabasic.mapping.Locker</class>
+    <class>my.study.jpabasic.mapping.Product</class>
+    <class>my.study.jpabasic.mapping.MemberProduct</class>
 <!--    <class>my.study.jpabasic.jpashop.domain.Item</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Member</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Order</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.OrderItem</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Delivery</class>-->
 <!--    <class>my.study.jpabasic.jpashop.domain.Category</class>-->
-    <class>my.study.jpabasic.advancedmapping.domain.Album</class>
-    <class>my.study.jpabasic.advancedmapping.domain.Book</class>
-    <class>my.study.jpabasic.advancedmapping.domain.Item</class>
-    <class>my.study.jpabasic.advancedmapping.domain.Movie</class>
+<!--    <class>my.study.jpabasic.advancedmapping.domain.Album</class>-->
+<!--    <class>my.study.jpabasic.advancedmapping.domain.Book</class>-->
+<!--    <class>my.study.jpabasic.advancedmapping.domain.Item</class>-->
+<!--    <class>my.study.jpabasic.advancedmapping.domain.Movie</class>-->
     <properties>
       <!-- 필수 속성 -->
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
