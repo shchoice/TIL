@@ -4,9 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import my.study.jpabasic.jpashop.domain.Book;
-import my.study.jpabasic.jpashop.domain.Order;
-import my.study.jpabasic.jpashop.domain.OrderItem;
+import my.study.jpabasic.jpashop.domain.Member;
 
 public class JpaMain {
 
@@ -18,11 +16,19 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Book book = new Book();
-      book.setName("JPA");
-      book.setAuthor("shchoi");
+      Member member = new Member();
+      member.setName("shchoice");
 
-      em.persist(book);
+      em.persist(member);
+
+      em.flush();
+      em.clear();
+
+//      Member findMember = em.find(Member.class, member.getId());
+      Member findMember = em.getReference(Member.class, member.getId());
+      System.out.println("findMember : " + findMember.getClass()); // findMember : class my.study.jpabasic.jpashop.domain.Member$HibernateProxy$18ilNFva
+      System.out.println("findMember.id : " + findMember.getId());
+      System.out.println("findMember.name : " + findMember.getName());
 
       tx.commit();
     } catch (Exception e) {
