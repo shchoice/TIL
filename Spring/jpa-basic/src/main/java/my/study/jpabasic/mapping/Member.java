@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -24,8 +25,8 @@ public class Member extends BaseEntity {
   private Long id;
   @Column(name = "username")
   private String name;
-  @ManyToOne
-  @JoinColumn(name = "team_id", insertable = false, updatable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn
   private Team team;
   @OneToOne
   @JoinColumn(name = "locker_id")
