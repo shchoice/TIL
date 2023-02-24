@@ -37,6 +37,7 @@ public class JpaMain {
       Member m22 = em.getReference(Member.class, member2.getId());
       System.out.println("m11 == m22 : " + (m11.getClass() == m22.getClass())); // false
 
+      isSameInstance(m1, m2);
 
       tx.commit();
     } catch (Exception e) {
@@ -45,5 +46,10 @@ public class JpaMain {
       em.close();
     }
     emf.close();
+  }
+
+  private static void isSameInstance(Member m1, Member m2) {
+    System.out.println("m1 == m2: " + (m1 instanceof  Member));
+    System.out.println("m1 == m2: " + (m2 instanceof  Member));
   }
 }
