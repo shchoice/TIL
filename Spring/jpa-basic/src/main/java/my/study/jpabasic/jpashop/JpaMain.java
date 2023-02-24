@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import my.study.jpabasic.jpashop.domain.Member;
+import org.hibernate.Hibernate;
 
 public class JpaMain {
 
@@ -25,17 +26,30 @@ public class JpaMain {
 
       Member refMember = em.getReference(Member.class, member1.getId());
       System.out.println("refMember : " + refMember.getClass());
+      System.out.println("isLoaded : " + emf.getPersistenceUnitUtil().isLoaded(refMember)); // isLoaded : false
 
-      em.detach(refMember);
+      refMember.getName();
+      System.out.println("isLoaded : " + emf.getPersistenceUnitUtil().isLoaded(refMember)); // isLoaded : true
 
-      System.out.println("refMember : " + refMember.getName());
-      // org.hibernate.LazyInitializationException: could not initialize proxy [my.study.jpabasic.jpashop.domain.Member#1] - no Session
-      //	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:176)
-      //	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:322)
-      //	at org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor.intercept(ByteBuddyInterceptor.java:45)
-      //	at org.hibernate.proxy.ProxyConfiguration$InterceptorDispatcher.intercept(ProxyConfiguration.java:95)
-      //	at my.study.jpabasic.jpashop.domain.Member$HibernateProxy$bsKnScm6.getName(Unknown Source)
-      //	at my.study.jpabasic.jpashop.JpaMain.main(JpaMain.java:31)
+      // 프록시 강제 초기화
+      Hibernate.initialize(refMember);
+      // Hibernate:
+      //    select
+      //        member0_.id as id1_4_0_,
+      //        member0_.created_by as created_2_4_0_,
+      //        member0_.created_date as created_3_4_0_,
+      //        member0_.last_modified_by as last_mod4_4_0_,
+      //        member0_.last_modified_date as last_mod5_4_0_,
+      //        member0_.city as city6_4_0_,
+      //        member0_.name as name7_4_0_,
+      //        member0_.street as street8_4_0_,
+      //        member0_.zipcode as zipcode9_4_0_
+      //    from
+      //        member member0_
+      //    where
+      //        member0_.id=?
+      //00:40:40.294 [main] DEB
+
 
       tx.commit();
     } catch (Exception e) {
