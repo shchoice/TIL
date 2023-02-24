@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Member {
+public class Member extends BaseEntity {
 
   @Id @GeneratedValue
   private Long id;

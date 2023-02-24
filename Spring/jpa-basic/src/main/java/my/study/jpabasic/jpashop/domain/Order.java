@@ -23,7 +23,7 @@ import lombok.Setter;
 @Table(name = "ORDERS")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Order {
+public class Order  extends BaseEntity{
 
   @Id @GeneratedValue
   @Column(name = "order_id")
