@@ -16,19 +16,27 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member member = new Member();
-      member.setName("shchoice");
+      Member member1 = new Member();
+      member1.setName("shchoice1");
+      em.persist(member1);
 
-      em.persist(member);
+      Member member2 = new Member();
+      member2.setName("shchoice2");
+      em.persist(member2);
 
       em.flush();
       em.clear();
 
-//      Member findMember = em.find(Member.class, member.getId());
-      Member findMember = em.getReference(Member.class, member.getId());
-      System.out.println("findMember : " + findMember.getClass()); // findMember : class my.study.jpabasic.jpashop.domain.Member$HibernateProxy$18ilNFva
-      System.out.println("findMember.id : " + findMember.getId());
-      System.out.println("findMember.name : " + findMember.getName());
+      Member m1 = em.find(Member.class, member1.getId());
+      Member m2 = em.find(Member.class, member2.getId());
+      System.out.println("m1 == m2 : " + (m1.getClass() == m2.getClass())); // true
+
+      em.clear();
+
+      Member m11 = em.find(Member.class, member1.getId());
+      Member m22 = em.getReference(Member.class, member2.getId());
+      System.out.println("m11 == m22 : " + (m11.getClass() == m22.getClass())); // false
+
 
       tx.commit();
     } catch (Exception e) {
