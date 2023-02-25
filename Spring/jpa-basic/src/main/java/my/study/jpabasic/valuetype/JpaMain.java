@@ -19,12 +19,21 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member member = new Member();
-      member.setName("shchoi");
-      member.setHomeAddress(new Address("city", "street", "zipcode"));
-      member.setWorkPeriod(new Period());
+      Address address = new Address("city", "street", "zipcode");
 
-      em.persist(member);
+      Member member1 = new Member();
+      member1.setName("shchoi1");
+      member1.setHomeAddress(address);
+      em.persist(member1);
+
+      Member member2 = new Member();
+      member2.setName("shchoi2");
+      member2.setHomeAddress(address);
+      em.persist(member2);
+
+      // 이렇게 작성할 경우 member1.city 와 member2.city 값 모두가 바뀌어 버그 찾기도 어려운 심각한 문제가 발생
+      // 만약에 member1.city, member2.city 모두가 변하게 하는 것이 정말 의도라면 Address를 Entity로 설정했어야 한다.
+      member1.getHomeAddress().setCity("newCity");
 
 
       tx.commit();
