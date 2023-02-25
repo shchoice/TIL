@@ -2,10 +2,14 @@ package my.study.jpabasic.valuetype.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +30,7 @@ import my.study.jpabasic.mapping.Team;
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Member extends BaseEntity {
+public class Member {
 
   @Id @GeneratedValue
   @Column(name = "member_id")
@@ -37,5 +41,11 @@ public class Member extends BaseEntity {
   private Period workPeriod;
   @Embedded
   private Address homeAddress;
+  @ElementCollection
+  @CollectionTable(name = "favorite_food", joinColumns = @JoinColumn(name = "member_id"))
+  private Set<String> favoriteFoods = new HashSet<>();
+  @ElementCollection
+  @CollectionTable(name = "address_history", joinColumns = @JoinColumn(name = "member_id"))
+  private List<Address> addresseHistory = new ArrayList<>();
 }
 

@@ -1,5 +1,7 @@
 package my.study.jpabasic.valuetype;
 
+import java.util.List;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -19,23 +21,31 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Address address = new Address("city", "street", "zipcode");
-
       Member member1 = new Member();
       member1.setName("shchoi1");
-      member1.setHomeAddress(address);
+      member1.setHomeAddress(new Address("city", "street", "zipcode"));
+      member1.getFavoriteFoods().add("피자");
+      member1.getFavoriteFoods().add("치킨");
+      member1.getFavoriteFoods().add("탕수육");
+
+      member1.getAddresseHistory().add(new Address("city1", "street1", "zipcode1"));
+      member1.getAddresseHistory().add(new Address("city2", "street2", "zipcode2"));
+
       em.persist(member1);
+      
+      em.flush();
+      em.clear();
 
-      Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
-
-      Member member2 = new Member();
-      member2.setName("shchoi2");
-      member2.setHomeAddress(copyAddress);
-      em.persist(member2);
-
-      // setter를 없애서 불변 객체로 만든다. 작은 제약을 통해 부작용이라는 대재앙을 막음!
-      // member1.getHomeAddress().setCity("newCity");
-
+      Member findMember = em.find(Member.class, member1.getId());
+      // 지연 로딩
+      List<Address> addresseHistory = findMember.getAddresseHistory();
+      for (Address address : addresseHistory) {
+        System.out.println("address = " + address.getCity());
+      }
+      Set<String> favoriteFoods = findMember.getFavoriteFoods();
+      for (String favoriteFood : favoriteFoods) {
+        System.out.println("favoriteFood = " + favoriteFood);
+      }
 
       tx.commit();
     } catch (Exception e) {
