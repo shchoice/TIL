@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import my.study.jpabasic.mapping.Team;
 import my.study.jpabasic.valuetype.domain.Address;
+import my.study.jpabasic.valuetype.domain.AddressEntity;
 import my.study.jpabasic.valuetype.domain.Member;
 import my.study.jpabasic.valuetype.domain.Period;
 
@@ -28,8 +29,8 @@ public class JpaMain {
       member1.getFavoriteFoods().add("치킨");
       member1.getFavoriteFoods().add("탕수육");
 
-      member1.getAddresseHistory().add(new Address("city1", "street1", "zipcode1"));
-      member1.getAddresseHistory().add(new Address("city2", "street2", "zipcode2"));
+      member1.getAddresseHistory().add(new AddressEntity("city1", "street1", "zipcode1"));
+      member1.getAddresseHistory().add(new AddressEntity("city2", "street2", "zipcode2"));
 
       em.persist(member1);
       
@@ -47,8 +48,8 @@ public class JpaMain {
 
       // city1 -> city1_new 로 변경
       // equals() 를 반드시 제대로 구현해 주어야함
-      findMember.getAddresseHistory().remove(new Address("city1", "street1", "zipcode1"));
-      findMember.getAddresseHistory().add(new Address("city1_new", "street1", "zipcode1"));
+      findMember.getAddresseHistory().remove(new AddressEntity("city1", "street1", "zipcode1"));
+      findMember.getAddresseHistory().add(new AddressEntity("city1_new", "street1", "zipcode1"));
 
       tx.commit();
     } catch (Exception e) {

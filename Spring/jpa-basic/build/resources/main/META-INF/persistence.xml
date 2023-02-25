@@ -24,6 +24,7 @@
 <!--    <class>my.study.jpabasic.advancedmapping.domain.Item</class>-->
 <!--    <class>my.study.jpabasic.advancedmapping.domain.Movie</class>-->
     <class>my.study.jpabasic.valuetype.domain.Member</class>
+    <class>my.study.jpabasic.valuetype.domain.AddressEntity</class>
     <properties>
       <!-- 필수 속성 -->
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

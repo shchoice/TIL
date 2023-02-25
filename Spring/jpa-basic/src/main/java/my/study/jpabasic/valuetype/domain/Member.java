@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -44,8 +45,11 @@ public class Member {
   @ElementCollection
   @CollectionTable(name = "favorite_food", joinColumns = @JoinColumn(name = "member_id"))
   private Set<String> favoriteFoods = new HashSet<>();
-  @ElementCollection
-  @CollectionTable(name = "address_history", joinColumns = @JoinColumn(name = "member_id"))
-  private List<Address> addresseHistory = new ArrayList<>();
+//  @ElementCollection
+//  @CollectionTable(name = "address_history", joinColumns = @JoinColumn(name = "member_id"))
+//  private List<Address> addresseHistory = new ArrayList<>();
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn(name = "member_id")
+  private List<AddressEntity> addresseHistory = new ArrayList<>();
 }
 
