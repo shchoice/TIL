@@ -2,6 +2,7 @@ package my.study.jpabasic.jpashop.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,9 +21,8 @@ public class Member extends BaseEntity {
   @Id @GeneratedValue
   private Long id;
   private String name;
-  private String city;
-  private String street;
-  private String zipcode;
+  @Embedded
+  private Address address;
   @OneToMany(mappedBy = "member")
   List<Order> orders = new ArrayList<>();
 }

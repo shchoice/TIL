@@ -1,5 +1,6 @@
 package my.study.jpabasic.jpashop.domain;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -13,9 +14,8 @@ public class Delivery extends BaseEntity{
   private Long id;
   @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
   private Order order;
-  private String city;
-  private String street;
-  private String zipcode;
+  @Embedded
+  private Address address;
   @Enumerated
   private DeliveryStatus deliveryStatus;
 }
