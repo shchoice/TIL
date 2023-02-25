@@ -37,15 +37,18 @@ public class JpaMain {
       em.clear();
 
       Member findMember = em.find(Member.class, member1.getId());
-      // 지연 로딩
-      List<Address> addresseHistory = findMember.getAddresseHistory();
-      for (Address address : addresseHistory) {
-        System.out.println("address = " + address.getCity());
-      }
-      Set<String> favoriteFoods = findMember.getFavoriteFoods();
-      for (String favoriteFood : favoriteFoods) {
-        System.out.println("favoriteFood = " + favoriteFood);
-      }
+      // city1 -> city_new 로 변경하고 싶을 경우
+      Address newAddress = findMember.getHomeAddress();
+      findMember.setHomeAddress(new Address("newCity", newAddress.getStreet(), newAddress.getZipcode()));
+
+      // 탕수육 -> 짜장면
+      findMember.getFavoriteFoods().remove("탕수육");
+      findMember.getFavoriteFoods().add("짜장면");
+
+      // city1 -> city1_new 로 변경
+      // equals() 를 반드시 제대로 구현해 주어야함
+      findMember.getAddresseHistory().remove(new Address("city1", "street1", "zipcode1"));
+      findMember.getAddresseHistory().add(new Address("city1_new", "street1", "zipcode1"));
 
       tx.commit();
     } catch (Exception e) {
