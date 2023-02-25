@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Embeddable
-@Getter @Setter
+@Getter
 @NoArgsConstructor @AllArgsConstructor
 public class Address {
 
