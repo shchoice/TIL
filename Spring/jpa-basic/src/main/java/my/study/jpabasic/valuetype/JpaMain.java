@@ -26,9 +26,11 @@ public class JpaMain {
       member1.setHomeAddress(address);
       em.persist(member1);
 
+      Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
+
       Member member2 = new Member();
       member2.setName("shchoi2");
-      member2.setHomeAddress(address);
+      member2.setHomeAddress(copyAddress);
       em.persist(member2);
 
       // 이렇게 작성할 경우 member1.city 와 member2.city 값 모두가 바뀌어 버그 찾기도 어려운 심각한 문제가 발생
