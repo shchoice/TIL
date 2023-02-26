@@ -24,11 +24,15 @@ public class JpaMain {
       member.setAge(32);
       em.persist(member);
 
-      TypedQuery<Member_JPQL> query1 = em.createQuery("SELECT m FROM Member_JPQL m", Member_JPQL.class);
-      TypedQuery<String> query2 = em.createQuery("SELECT m.username FROM Member_JPQL m", String.class);
-      Query query3 = em.createQuery("SELECT m.username, m.username FROM Member_JPQL m");
+      // 이름기준, 웬만하면 이름기준 사용하자(위치기준은 순서가 꼬일 수도 있음)
+      TypedQuery<Member_JPQL> query = em.createQuery("SELECT m FROM Member_JPQL m where m.username=:username", Member_JPQL.class);
+      query.setParameter("username", "shchoi");
 
-      List<Member_JPQL> resultList = query1.getResultList();
+      // 위치기준
+      query = em.createQuery("SELECT m FROM Member_JPQL m where m.username=?1", Member_JPQL.class);
+      query.setParameter(1, "shchoi");
+
+      List<Member_JPQL> resultList = query.getResultList();
       for (Member_JPQL member_jpql: resultList) {
         System.out.println("member.username = " +member_jpql.getUsername());
       }
