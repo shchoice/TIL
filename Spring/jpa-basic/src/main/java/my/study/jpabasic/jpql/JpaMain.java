@@ -21,20 +21,21 @@ public class JpaMain {
     tx.begin();
 
     try {
-      for (int i = 0; i < 100; i++) {
-        Member_JPQL member = new Member_JPQL();
-        member.setUsername("shchoi" + i);
-        member.setAge(i);
-        em.persist(member);
-      }
+      Team team = new Team();
+      team.setName("기반기술");
+      em.persist(team);
+
+      Member_JPQL member = new Member_JPQL();
+      member.setUsername("shchoi");
+      member.setAge(32);
+      member.setTeam(team);
+      em.persist(member);
 
       em.flush();
       em.clear();
 
-      String jpql = "select m from Member_JPQL m order by m.username desc";
+      String jpql = "SELECT m FROM Member_JPQL m INNER JOIN m.team t";
       List<Member_JPQL> resultList = em.createQuery(jpql, Member_JPQL.class)
-          .setFirstResult(0)
-          .setMaxResults(10)
           .getResultList();
 
       System.out.println("result.size : " + resultList.size());

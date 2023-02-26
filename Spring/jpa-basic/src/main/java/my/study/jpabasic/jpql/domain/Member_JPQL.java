@@ -32,4 +32,9 @@ public class Member_JPQL {
   @OneToMany
   @JoinColumn(name = "member_id")
   private List<Order> orders = new ArrayList<>();
+
+  public void changeTeam(Team team) {
+    this.team = team;
+    team.getMembers().add(this);
+  }
 }
