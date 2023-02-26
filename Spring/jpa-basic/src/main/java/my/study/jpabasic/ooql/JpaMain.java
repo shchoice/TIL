@@ -19,7 +19,7 @@ public class JpaMain {
     tx.begin();
 
     try {
-      String jpql = "select m From Member m where m.name like '%sh%'";
+      String jpql = "select m From Member_JPQL m where m.name like '%sh%'";
       List<Member> result = em.createQuery(jpql, Member.class).getResultList();
 
       tx.commit();
