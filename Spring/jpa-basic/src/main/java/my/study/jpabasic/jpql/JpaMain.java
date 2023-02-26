@@ -21,28 +21,26 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member_JPQL member = new Member_JPQL();
-      member.setUsername("shchoi");
-      member.setAge(32);
-      em.persist(member);
+      for (int i = 0; i < 100; i++) {
+        Member_JPQL member = new Member_JPQL();
+        member.setUsername("shchoi" + i);
+        member.setAge(i);
+        em.persist(member);
+      }
 
       em.flush();
       em.clear();
 
-      List<Member_JPQL> resultList = em.createQuery("SELECT m FROM Member_JPQL m", Member_JPQL.class).getResultList();
-      Member_JPQL findMember = resultList.get(0);
-      findMember.setAge(33);
+      String jpql = "select m from Member_JPQL m order by m.username desc";
+      List<Member_JPQL> resultList = em.createQuery(jpql, Member_JPQL.class)
+          .setFirstResult(0)
+          .setMaxResults(10)
+          .getResultList();
+
+      System.out.println("result.size : " + resultList.size());
       for (Member_JPQL member_jpql: resultList) {
-        System.out.println("member.username = " +member_jpql.getUsername());
+        System.out.println("member = " + member_jpql);
       }
-
-      // SELECT m.team FROM Member m 로 표현가능하지만 명시적으로 표현하는게 더 좋다
-      List<Team> resultTeamList = em.createQuery("SELECT t FROM Member_JPQL m JOIN m.team t", Team.class).getResultList();
-
-      List<MemberDTO> resultDTO = em.createQuery("SELECT new my.study.jpabasic.jpql.domain.MemberDTO(m.username, m.age) FROM Member_JPQL m", MemberDTO.class).getResultList();
-      MemberDTO memberDTO = resultDTO.get(0);
-      System.out.println("memberDTO = " + memberDTO.getUsername());
-      System.out.println("memberDTO = " + memberDTO.getAge());
 
       tx.commit();
     } catch (Exception e) {

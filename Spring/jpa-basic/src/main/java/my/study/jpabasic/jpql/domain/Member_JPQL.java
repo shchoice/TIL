@@ -13,9 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter @Setter
+@ToString
 @Table(name = "MEMBER")
 public class Member_JPQL {
 
