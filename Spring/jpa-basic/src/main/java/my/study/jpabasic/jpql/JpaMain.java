@@ -48,7 +48,7 @@ public class JpaMain {
       em.flush();
       em.clear();
 
-      String jpql = "SELECT m FROM Member_JPQL m";
+      String jpql = "SELECT m FROM Member_JPQL m JOIN FETCH m.team";
       List<Member_JPQL> resultList = em.createQuery(jpql, Member_JPQL.class).getResultList();
 
       System.out.println("result.size : " + resultList.size());
@@ -57,27 +57,20 @@ public class JpaMain {
         //     /* SELECT
         //        m
         //    FROM
-        //        Member_JPQL m */ select
-        //            member_jpq0_.member_id as member_i1_0_,
-        //            member_jpq0_.age as age2_0_,
-        //            member_jpq0_.team_id as team_id4_0_,
-        //            member_jpq0_.username as username3_0_
+        //        Member_JPQL m
+        //    JOIN
+        //        FETCH m.team */ select
+        //            member_jpq0_.member_id as member_i1_0_0_,
+        //            team1_.team_id as team_id1_3_1_,
+        //            member_jpq0_.age as age2_0_0_,
+        //            member_jpq0_.team_id as team_id4_0_0_,
+        //            member_jpq0_.username as username3_0_0_,
+        //            team1_.name as name2_3_1_
         //        from
         //            member member_jpq0_
-        //
-        //     select
-        //        team0_.team_id as team_id1_3_0_,
-        //        team0_.name as name2_3_0_
-        //    from
-        //        team team0_
-        //    where
-        //        team0_.team_id=?
-        //
-        // 회원1, 팀A(SQL)
-        // 회원2, 팀A(1차캐시)
-        // 회원3, 팀B(SQL)
-        // 쿼리 3번 돌음
-        // 만약 회원 100명 -> 최악의 경우 N + 1번 돌음 -> fetch join으로 풀어라!!
+        //        inner join
+        //            team team1_
+        //                on member_jpq0_.team_id=team1_.team_id
       }
 
       tx.commit();
