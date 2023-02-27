@@ -48,29 +48,16 @@ public class JpaMain {
       em.flush();
       em.clear();
 
-      String jpql = "SELECT m FROM Member_JPQL m JOIN FETCH m.team";
-      List<Member_JPQL> resultList = em.createQuery(jpql, Member_JPQL.class).getResultList();
+      String jpql = "SELECT t FROM Team t JOIN FETCH t.members";
+      List<Team> resultList = em.createQuery(jpql, Team.class).getResultList();
 
       System.out.println("result.size : " + resultList.size());
-      for (Member_JPQL member_jpql: resultList) {
-        System.out.println("member = " + member_jpql.getUsername() + ", " + member_jpql.getTeam().getName());
-        //     /* SELECT
-        //        m
-        //    FROM
-        //        Member_JPQL m
-        //    JOIN
-        //        FETCH m.team */ select
-        //            member_jpq0_.member_id as member_i1_0_0_,
-        //            team1_.team_id as team_id1_3_1_,
-        //            member_jpq0_.age as age2_0_0_,
-        //            member_jpq0_.team_id as team_id4_0_0_,
-        //            member_jpq0_.username as username3_0_0_,
-        //            team1_.name as name2_3_1_
-        //        from
-        //            member member_jpq0_
-        //        inner join
-        //            team team1_
-        //                on member_jpq0_.team_id=team1_.team_id
+      for (Team team: resultList) {
+        System.out.println("member = " + team.getName() + ", " + team.getMembers().size());
+//        result.size : 3 -> join으로 인해 2가 나와야 하는데 3이 나옴..
+//        member = 기반기술1팀, 2
+//        member = 기반기술1팀, 2
+//        member = 기반기술2팀, 1
       }
 
       tx.commit();
