@@ -48,16 +48,21 @@ public class JpaMain {
       em.flush();
       em.clear();
 
-      String jpql = "SELECT t FROM Team t JOIN FETCH t.members";
+      String jpql = "SELECT DISTINCT t FROM Team t JOIN FETCH t.members";
       List<Team> resultList = em.createQuery(jpql, Team.class).getResultList();
 
       System.out.println("result.size : " + resultList.size());
       for (Team team: resultList) {
         System.out.println("member = " + team.getName() + ", " + team.getMembers().size());
-//        result.size : 3 -> join으로 인해 2가 나와야 하는데 3이 나옴..
+        for (Member_JPQL member_jpql: team.getMembers()) {
+          System.out.println("-> Member = " + member_jpql);
+        }
+//        result.size : 2
 //        member = 기반기술1팀, 2
-//        member = 기반기술1팀, 2
+//        -> Member = Member_JPQL(id=3, username=shchoi, age=32, team=my.study.jpabasic.jpql.domain.Team@781711b7, orders=[])
+//        -> Member = Member_JPQL(id=4, username=shchoi2, age=33, team=my.study.jpabasic.jpql.domain.Team@781711b7, orders=[])
 //        member = 기반기술2팀, 1
+//        -> Member = Member_JPQL(id=5, username=shchoi3, age=33, team=my.study.jpabasic.jpql.domain.Team@65bb6275, orders=[])
       }
 
       tx.commit();
