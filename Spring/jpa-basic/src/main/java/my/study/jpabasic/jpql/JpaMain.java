@@ -49,12 +49,18 @@ public class JpaMain {
       em.flush();
       em.clear();
 
-      List<Member_JPQL> resultList = em.createNamedQuery("Member_JPQL.findByUsername", Member_JPQL.class)
-          .setParameter("username", "shchoi")
-          .getResultList();
+      String query = "update Member_JPQL m set m.age = 20";
+      int result = em.createQuery(query).executeUpdate();
 
-      System.out.println("result.size : " + resultList.size());
-
+      System.out.println("result : " + result);
+      //    /* update
+      //        Member_JPQL m
+      //    set
+      //        m.age = 20 */ update
+      //            member
+      //        set
+      //            age=20
+      //result.size : 3
 
       tx.commit();
     } catch (Exception e) {
