@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -18,6 +19,10 @@ import lombok.ToString;
 @Entity
 @Getter @Setter
 @ToString
+@NamedQuery(
+    name = "Member_JPQL.findByUsername",
+    query = "SELECT m FROM Member_JPQL m WHERE m.username = :username"
+)
 @Table(name = "MEMBER")
 public class Member_JPQL {
 
