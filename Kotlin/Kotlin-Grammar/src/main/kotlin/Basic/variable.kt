@@ -1,4 +1,7 @@
-package `01`
+package Basic
 
-class variable {
+fun main() {
+    val a: Int = 1
+
+    val b = 2
 }
