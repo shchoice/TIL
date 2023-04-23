@@ -5,6 +5,7 @@ import kotlinexample01.issueservice.domain.enums.IssueStatus
 import kotlinexample01.issueservice.model.IssueRequest
 import kotlinexample01.issueservice.model.IssueResponse
 import kotlinexample01.issueservice.service.IssueService
+import org.springframework.http.HttpStatus
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 
@@ -39,4 +40,13 @@ class IssueController(
         @PathVariable id : Long,
         @RequestBody request: IssueRequest,
     ) = issueService.edit(authUser.userId, id, request)
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete (
+        authUser: AuthUser,
+        @PathVariable id: Long,
+    ) {
+        issueService.delete(id)
+    }
 }
