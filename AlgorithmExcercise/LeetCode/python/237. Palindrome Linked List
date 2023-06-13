@@ -1,0 +1,38 @@
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+node = [1, 2, 2, 1]
+listNode = [ListNode(i) for i in node]
+
+for i in range(len(node) - 1):
+    listNode[i].next = listNode[i + 1]
+
+head = listNode[0]
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        node_list = []
+
+        while head is not None:
+            node_list.append(head.val)
+            head = head.next
+
+        print(node_list)
+
+        return self.checkPalindrome(node_list)
+
+    def checkPalindrome(self, node_list: list):
+
+        for i in range(int(len(node_list) / 2)):
+            if node_list[i] != node_list[len(node_list) - i - 1]:
+                return False
+
+        return True
+
+sol = Solution()
+sol.isPalindrome(head)
