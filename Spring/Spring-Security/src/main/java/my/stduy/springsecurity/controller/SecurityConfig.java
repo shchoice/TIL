@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -44,7 +47,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             httpServletResponse.sendRedirect("/login");
           }
         })
-        .permitAll() // loginPage 페이로 접근하는 모든 사용자들은 인가를 받지 않아도 접근이 가능하도록 함
+        .permitAll(); // loginPage 페이로 접근하는 모든 사용자들은 인가를 받지 않아도 접근이 가능하도록 함
+    http
+        .logout()
+        .logoutUrl("/logout") // 원칙적으로 POST 방식으로만 로그아웃 처리가 됨, GET 방법으로도 할 수는 있지만 별도 처리 않하면 에러 발생
+        .logoutSuccessUrl("/login")
+        .addLogoutHandler(new LogoutHandler() {
+          @Override
+          public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
+            HttpSession session = httpServletRequest.getSession();
+            session.invalidate();
+          }
+        })
+        .logoutSuccessHandler(new LogoutSuccessHandler() {
+          @Override
+          public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+            httpServletResponse.sendRedirect("/login");
+          }
+        })
+        .deleteCookies("remember-me")
     ;
 
   }
