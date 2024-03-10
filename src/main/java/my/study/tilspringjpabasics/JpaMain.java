@@ -18,17 +18,16 @@ public class JpaMain {
     try {
       // 비영속
       Member member = new Member();
-      member.setId(3L);
-      member.setName("persistence");
+      member.setId(4L);
+      member.setName("persistence-detach");
 
       // 영속
       System.out.println("--- before ---");
       em.persist(member);
+      em.detach(member);
       System.out.println("--- after ---");
 
-      // 예상으로는 before 와 after 사이에서 영속성이 일어나 Query가 날아가야할 것 같지만
-      // 실제로는 영속 상태가 된다고 해서 DB의 Query가 날아가는 것이 아님
-      // Transaction을 commit 하는 시점에 영속성 context에 있는 얘가 DB의 쿼리로 날아가게됨
+      // 준영속 상태로 영속 상태 처럼 로그는 아래와 같이 찍히지만 실제로는 DB에 반영이 안됨
       /*
       --- before ---
       --- after ---
@@ -40,7 +39,6 @@ public class JpaMain {
                 values
                   (?, ?)
        */
-
       tx.commit();
     } catch (Exception e) {
       tx.rollback();
