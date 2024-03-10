@@ -15,8 +15,9 @@ public class JpaMain {
     tx.begin();
 
     try {
+      // 회원 객체 수정 - 수정할 때는 em.persist 를 사용하지 않아도 됨, Java Collection 하듯이 JPA가 만들어짐
       Member findMember = em.find(Member.class, 1L);
-      em.remove(findMember);
+      findMember.setName("shchoice");
       /*
       Hibernate:
         select
@@ -27,11 +28,12 @@ public class JpaMain {
         where
             m1_0.id=?
       Hibernate:
-        / * delete for my.study.tilspringjpabasics.query.entity.Member * /delete
-        from
-          Member
-        where
-          id=?
+      / * update
+          for my.study.tilspringjpabasics.query.entity.Member * /update Member
+      set
+        name=?
+      where
+        id=?
       */
       tx.commit();
     } catch (Exception e) {
