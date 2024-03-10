@@ -16,23 +16,24 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member member = new Member(1L, "shchoice01");
-      em.persist(member);
+      Member findMember01 = em.find(Member.class, 1L);
+      findMember01.setName("shchoice01-detach");
 
-      em.flush();
+      em.detach(findMember01); // em.clear() 를 사용해도 됨
       System.out.println("==============");
       tx.commit();
-      // flush 로 인해 commit 이전 시점에 일어난 것을 볼 수 있음
+      // detach를 했기 때문에 select 문 일어나고 insert가 일어나지 않음을 확인할 수 있음
       /*
       Hibernate:
-      / * insert for
-            my.study.tilspringjpabasics.query.entity.Member * /insert
-        into
-            Member (name, id)
-        values
-            (?, ?)
-        ==============
-       */
+      select
+          m1_0.id,
+          m1_0.name
+      from
+          Member m1_0
+      where
+          m1_0.id=?
+      ==============
+      */
 
     } catch (Exception e) {
       tx.rollback();
