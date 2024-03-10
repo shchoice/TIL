@@ -16,51 +16,31 @@ public class JpaMain {
     tx.begin();
 
     try {
-      // JPA 입장에서는 코드를 짤 때 테이블을 대상으로 코드를 짜지 않고 멤버 객체를 대상으로 함
-      List<Member> members = em.createQuery("select m from Member as m", Member.class)
-          .getResultList();
-      for (Member member: members) {
-        System.out.println("member.getName() = " + member.getName());
-      }
-      /*
-       Hibernate:
-        / * select
-            m
-        from
-            Member as m * / select
-            m1_0.id,
-                m1_0.name
-            from
-            Member m1_0
-      member.getName() = shchoice
-      member.getName() = jpa
-      */
+      // 비영속
+      Member member = new Member();
+      member.setId(3L);
+      member.setName("persistence");
 
-      List<Member> members2 = em.createQuery("select m from Member as m", Member.class)
-          .setFirstResult(0)
-          .setMaxResults(10)
-          .getResultList();
-      for (Member member: members2) {
-        System.out.println("member.getName() = " + member.getName());
-      }
+      // 영속
+      System.out.println("--- before ---");
+      em.persist(member);
+      System.out.println("--- after ---");
+
+      // 예상으로는 before 와 after 사이에서 영속성이 일어나 Query가 날아가야할 것 같지만
+      // 실제로는 영속 상태가 된다고 해서 DB의 Query가 날아가는 것이 아님
+      // Transaction을 commit 하는 시점에 영속성 context에 있는 얘가 DB의 쿼리로 날아가게됨
       /*
-       Hibernate:
-        /* select
-            m
-          from
-              Member as m * / select
-                m1_0.id,
-                m1_0.name
-            from
-                Member m1_0
-            offset
-                ? rows
-            fetch
-                first ? rows only
-        member.getName() = shchoice
-        member.getName() = jpa
-        */
-      
+      --- before ---
+      --- after ---
+      Hibernate:
+          / * insert for
+              my.study.tilspringjpabasics.query.entity.Member * /insert
+                into
+                  Member (name, id)
+                values
+                  (?, ?)
+       */
+
       tx.commit();
     } catch (Exception e) {
       tx.rollback();
