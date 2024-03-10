@@ -15,11 +15,22 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member member = new Member();
-      member.setId(1L);
-      member.setName("Hello A");
+      Member findMember = em.find(Member.class, 1L);
+      System.out.println("findMember.getId() = " + findMember.getId());
+      System.out.println("findMember.getName() = " + findMember.getName());
 
-      em.persist(member);
+      /*
+      Hibernate:
+        select
+            m1_0.id,
+            m1_0.name
+        from
+            Member m1_0
+        where
+            m1_0.id=?
+      findMember.getId() = 1
+      findMember.getName() = Hello A
+      */
       tx.commit();
     } catch (Exception e) {
       tx.rollback();
@@ -27,17 +38,6 @@ public class JpaMain {
       em.close();
 
     }
-    // persistence.xml 에서 show_sql property 를 true 로 했기 때문이며
-    // format_sql로 출력을 pretty하게 수행
-    // sql_comments 때문에 insert for my.study.tilspringjpabasics.query.entity.Member 가 추가 표시됨
-    /*
-     insert for
-        my.study.tilspringjpabasics.query.entity.Member /insert
-      into
-        Member (name, id)
-      values
-        (?, ?)
-     */
     emf.close();
   }
 }
