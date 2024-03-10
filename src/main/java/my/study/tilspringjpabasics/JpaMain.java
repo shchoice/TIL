@@ -16,9 +16,7 @@ public class JpaMain {
 
     try {
       Member findMember = em.find(Member.class, 1L);
-      System.out.println("findMember.getId() = " + findMember.getId());
-      System.out.println("findMember.getName() = " + findMember.getName());
-
+      em.remove(findMember);
       /*
       Hibernate:
         select
@@ -28,8 +26,12 @@ public class JpaMain {
             Member m1_0
         where
             m1_0.id=?
-      findMember.getId() = 1
-      findMember.getName() = Hello A
+      Hibernate:
+        / * delete for my.study.tilspringjpabasics.query.entity.Member * /delete
+        from
+          Member
+        where
+          id=?
       */
       tx.commit();
     } catch (Exception e) {
