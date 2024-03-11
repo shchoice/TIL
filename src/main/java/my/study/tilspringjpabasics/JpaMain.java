@@ -4,8 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import java.util.List;
-import my.study.tilspringjpabasics.query.entity.Member;
+import my.study.tilspringjpabasics.entity.Member;
 
 public class JpaMain {
 
