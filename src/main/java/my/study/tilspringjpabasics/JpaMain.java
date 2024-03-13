@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import my.study.tilspringjpabasics.entity.Member;
+import my.study.tilspringjpabasics.enumType.RoleType;
 
 public class JpaMain {
 
@@ -15,25 +16,13 @@ public class JpaMain {
     tx.begin();
 
     try {
-      Member findMember01 = em.find(Member.class, 1L);
-      findMember01.setName("shchoice01-detach");
+      Member member = new Member();
+      member.setId(1L);
+      member.setUsername("shchoice");
+      member.setRoleType(RoleType.USER);
 
-      em.detach(findMember01); // em.clear() 를 사용해도 됨
-      System.out.println("==============");
+      em.persist(member);
       tx.commit();
-      // detach를 했기 때문에 select 문 일어나고 insert가 일어나지 않음을 확인할 수 있음
-      /*
-      Hibernate:
-      select
-          m1_0.id,
-          m1_0.name
-      from
-          Member m1_0
-      where
-          m1_0.id=?
-      ==============
-      */
-
     } catch (Exception e) {
       tx.rollback();
     } finally {
