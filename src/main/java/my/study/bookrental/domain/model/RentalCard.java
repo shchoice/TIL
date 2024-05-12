@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import my.study.bookrental.domain.model.event.ItemRented;
+import my.study.bookrental.domain.model.event.ItemReturned;
+import my.study.bookrental.domain.model.event.OverdueCleared;
 import my.study.bookrental.domain.model.vo.IdName;
 import my.study.bookrental.domain.model.vo.Item;
 import my.study.bookrental.domain.model.vo.LateFee;
@@ -74,18 +77,18 @@ public class RentalCard {
         return rentalCard;
     }
 
-//
-//    public static ItemRented createItemRentedEvent(IDName idName, Item item, long point){
-//        return new ItemRented(idName,item,point);
-//    }
-//
-//    public static ItemReturned createItemReturnEvent(IDName idName,Item item,long point){
-//        return new ItemReturned(idName,item,point);
-//    }
-//
-//    public static OverdueCleared createOverdueCleardEvent(IDName idName,long point){
-//        return new OverdueCleared(idName,point);
-//    }
+
+    public static ItemRented createItemRentedEvent(IdName idName, Item item, long point){
+        return new ItemRented(idName,item,point);
+    }
+
+    public static ItemReturned createItemReturnEvent(IdName idName,Item item,long point){
+        return new ItemReturned(idName,item,point);
+    }
+
+    public static OverdueCleared createOverdueCleardEvent(IdName idName,long point){
+        return new OverdueCleared(idName,point);
+    }
 
     //대여처리
     public RentalCard rentItem(Item item){
