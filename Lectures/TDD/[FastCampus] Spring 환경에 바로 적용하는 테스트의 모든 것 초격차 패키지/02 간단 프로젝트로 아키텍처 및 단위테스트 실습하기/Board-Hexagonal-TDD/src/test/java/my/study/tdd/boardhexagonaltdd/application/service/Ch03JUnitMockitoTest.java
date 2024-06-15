@@ -5,12 +5,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.CommandArticlePort;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.LoadArticlePort;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.LoadBoardPort;
-import my.study.tdd.boardhexagonaltdd.article.application.service.ArticleService;
-import my.study.tdd.boardhexagonaltdd.article.domain.Article;
-import my.study.tdd.boardhexagonaltdd.article.domain.ArticleFixtures;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.CommandArticlePort;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadArticlePort;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadBoardPort;
+import my.study.tdd.boardhexagonaltdd.domain.application.service.ArticleService;
+import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.domain.ArticleFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

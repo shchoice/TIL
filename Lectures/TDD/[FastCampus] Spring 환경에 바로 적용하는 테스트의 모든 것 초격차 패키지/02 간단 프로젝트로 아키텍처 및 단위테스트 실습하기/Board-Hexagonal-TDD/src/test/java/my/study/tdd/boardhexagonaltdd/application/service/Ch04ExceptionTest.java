@@ -2,16 +2,14 @@ package my.study.tdd.boardhexagonaltdd.application.service;
 
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 
-import java.util.Optional;
-import my.study.tdd.boardhexagonaltdd.article.adapter.in.api.dto.ArticleDto;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.CommandArticlePort;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.LoadArticlePort;
-import my.study.tdd.boardhexagonaltdd.article.application.port.out.LoadBoardPort;
-import my.study.tdd.boardhexagonaltdd.article.application.service.ArticleService;
-import my.study.tdd.boardhexagonaltdd.article.domain.Board;
-import my.study.tdd.boardhexagonaltdd.article.domain.BoardFixtures;
+import my.study.tdd.boardhexagonaltdd.domain.adapter.in.api.dto.ArticleDto;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.CommandArticlePort;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadArticlePort;
+import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadBoardPort;
+import my.study.tdd.boardhexagonaltdd.domain.application.service.ArticleService;
+import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
+import my.study.tdd.boardhexagonaltdd.domain.domain.BoardFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
