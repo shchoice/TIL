@@ -70,6 +70,8 @@ class Ch06NestedTest {
             .isInstanceOf(ResourceNotFoundException.class);
     }
 
+    // 테스트 끼리 연관 있는 것을 묶어서 가독성이 좋아짐
+    // ex) 같은 역할에 대해 하나는 성공 하나는 실패하는 케이스를 묶어버림
     @Nested
     @DisplayName("Article 조회")
     class GetArticle {
