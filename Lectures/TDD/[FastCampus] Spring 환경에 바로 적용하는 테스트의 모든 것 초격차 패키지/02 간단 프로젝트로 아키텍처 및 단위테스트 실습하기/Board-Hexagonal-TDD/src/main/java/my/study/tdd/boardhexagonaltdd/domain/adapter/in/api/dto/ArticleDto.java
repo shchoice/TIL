@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
 import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class ArticleDto {
     public record CreateArticleRequest(
