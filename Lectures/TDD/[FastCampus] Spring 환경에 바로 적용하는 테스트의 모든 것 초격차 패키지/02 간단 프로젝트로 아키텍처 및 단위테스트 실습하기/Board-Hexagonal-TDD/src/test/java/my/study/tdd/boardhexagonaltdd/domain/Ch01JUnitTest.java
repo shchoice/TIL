@@ -1,8 +1,6 @@
 package my.study.tdd.boardhexagonaltdd.domain;
 
 import java.time.LocalDateTime;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

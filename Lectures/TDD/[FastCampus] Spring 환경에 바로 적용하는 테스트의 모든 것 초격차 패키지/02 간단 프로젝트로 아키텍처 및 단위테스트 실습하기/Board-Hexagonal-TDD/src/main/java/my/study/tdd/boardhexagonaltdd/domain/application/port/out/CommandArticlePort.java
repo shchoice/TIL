@@ -1,7 +1,7 @@
 package my.study.tdd.boardhexagonaltdd.domain.application.port.out;
 
 
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
 
 public interface CommandArticlePort {
     Article createArticle(Article article);

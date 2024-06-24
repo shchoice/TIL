@@ -3,7 +3,7 @@ package my.study.tdd.boardhexagonaltdd.domain.adapter.out.persistence;
 import java.util.Optional;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadBoardPort;
 import my.study.tdd.boardhexagonaltdd.domain.adapter.out.persistence.repository.BoardRepository;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
+import my.study.tdd.boardhexagonaltdd.domain.Board;
 import my.study.tdd.boardhexagonaltdd.domain.adapter.out.persistence.entity.BoardJpaEntity;
 import org.springframework.stereotype.Component;
 

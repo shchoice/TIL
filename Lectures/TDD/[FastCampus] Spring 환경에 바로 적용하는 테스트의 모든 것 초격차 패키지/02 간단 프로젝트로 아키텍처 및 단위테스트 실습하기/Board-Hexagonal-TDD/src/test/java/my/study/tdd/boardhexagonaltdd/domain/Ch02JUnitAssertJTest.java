@@ -1,8 +1,6 @@
 package my.study.tdd.boardhexagonaltdd.domain;
 
 import java.time.LocalDateTime;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;

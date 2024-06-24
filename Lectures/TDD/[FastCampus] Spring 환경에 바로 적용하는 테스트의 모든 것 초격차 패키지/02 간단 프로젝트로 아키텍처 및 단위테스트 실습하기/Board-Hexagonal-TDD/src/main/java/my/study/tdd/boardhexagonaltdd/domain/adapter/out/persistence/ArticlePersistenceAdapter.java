@@ -6,8 +6,8 @@ import my.study.tdd.boardhexagonaltdd.domain.adapter.out.persistence.entity.Arti
 import my.study.tdd.boardhexagonaltdd.domain.adapter.out.persistence.repository.ArticleRepository;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.CommandArticlePort;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadArticlePort;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.Board;
 import org.springframework.stereotype.Component;
 
 @Component

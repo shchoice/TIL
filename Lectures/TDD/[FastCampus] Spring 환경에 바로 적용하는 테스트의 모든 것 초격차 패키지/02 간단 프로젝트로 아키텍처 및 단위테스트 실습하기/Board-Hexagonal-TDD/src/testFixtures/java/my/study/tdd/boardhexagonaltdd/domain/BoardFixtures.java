@@ -1,4 +1,4 @@
-package my.study.tdd.boardhexagonaltdd.domain.domain;
+package my.study.tdd.boardhexagonaltdd.domain;
 
 public class BoardFixtures {
     public static Board board() {

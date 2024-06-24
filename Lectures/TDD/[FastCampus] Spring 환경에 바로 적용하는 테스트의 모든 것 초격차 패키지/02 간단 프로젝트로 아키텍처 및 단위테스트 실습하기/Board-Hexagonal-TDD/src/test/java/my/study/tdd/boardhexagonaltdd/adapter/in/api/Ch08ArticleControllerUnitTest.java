@@ -20,7 +20,7 @@ import my.study.tdd.boardhexagonaltdd.domain.application.port.in.CreateArticleUs
 import my.study.tdd.boardhexagonaltdd.domain.application.port.in.DeleteArticleUseCase;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.in.GetArticleUseCase;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.in.ModifyArticleUseCase;
-import my.study.tdd.boardhexagonaltdd.domain.domain.ArticleFixtures;
+import my.study.tdd.boardhexagonaltdd.domain.ArticleFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

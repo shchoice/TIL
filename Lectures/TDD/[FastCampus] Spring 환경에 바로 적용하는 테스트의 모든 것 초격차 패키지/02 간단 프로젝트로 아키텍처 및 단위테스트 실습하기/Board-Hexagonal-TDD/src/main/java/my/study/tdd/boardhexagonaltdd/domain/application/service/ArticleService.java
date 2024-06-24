@@ -11,7 +11,7 @@ import my.study.tdd.boardhexagonaltdd.domain.application.port.in.ModifyArticleUs
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.CommandArticlePort;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadArticlePort;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadBoardPort;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
 import my.study.tdd.boardhexagonaltdd.common.exception.AccessDeniedException;
 import my.study.tdd.boardhexagonaltdd.common.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;

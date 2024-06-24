@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
 
 @Entity
 @Table(name = "article")

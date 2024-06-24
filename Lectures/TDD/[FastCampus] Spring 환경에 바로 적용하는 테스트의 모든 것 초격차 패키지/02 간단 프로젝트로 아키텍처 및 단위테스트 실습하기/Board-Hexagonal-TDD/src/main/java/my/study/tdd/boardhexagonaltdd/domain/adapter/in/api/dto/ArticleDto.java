@@ -2,8 +2,8 @@ package my.study.tdd.boardhexagonaltdd.domain.adapter.in.api.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.Board;
 import jakarta.validation.constraints.NotNull;
 
 public class ArticleDto {

@@ -9,8 +9,8 @@ import my.study.tdd.boardhexagonaltdd.domain.application.port.out.CommandArticle
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadArticlePort;
 import my.study.tdd.boardhexagonaltdd.domain.application.port.out.LoadBoardPort;
 import my.study.tdd.boardhexagonaltdd.domain.application.service.ArticleService;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Article;
-import my.study.tdd.boardhexagonaltdd.domain.domain.ArticleFixtures;
+import my.study.tdd.boardhexagonaltdd.domain.Article;
+import my.study.tdd.boardhexagonaltdd.domain.ArticleFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

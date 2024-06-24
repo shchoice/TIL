@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import my.study.tdd.boardhexagonaltdd.domain.domain.Board;
+import my.study.tdd.boardhexagonaltdd.domain.Board;
 
 @Entity
 @Table(name = "board")
